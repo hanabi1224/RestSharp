@@ -16,7 +16,6 @@ namespace RestSharp.Tests
             Assert.IsNotEmpty(restRequest.AllowedDecompressionMethods);                        
         }
 
-
         [Test]
         public void ShouldDecompressionMethodsContainsDefaultValues()
         {

@@ -4,7 +4,22 @@
     <IsPackable>false</IsPackable>
     <AssemblyOriginatorKeyFile>..\RestSharp.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
+
+    <!-- Add the myget feed, without altering any other configurations. -->
+    <RestoreAdditionalProjectSources>https://dotnet.myget.org/F/dotnet-core/api/v3/index.json</RestoreAdditionalProjectSources>
+      
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'== 'net452'">
+    <!-- Make .NET 4.5 reference assemblies available even on Linux -->
+    <FrameworkPathOverride>$(NuGetPackageRoot)microsoft.targetingpack.netframework.v4.5.2/1.0.1/lib/net452/</FrameworkPathOverride>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)'== 'net452'">
+    <PackageReference Include="Microsoft.TargetingPack.NETFramework.v4.5.2" Version="1.0.1"
+                      ExcludeAssets="All" PrivateAssets="All"/>
+    <Reference Include="System.XML"/>
+  </ItemGroup>
+    
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
     <WarningLevel>0</WarningLevel>
   </PropertyGroup>

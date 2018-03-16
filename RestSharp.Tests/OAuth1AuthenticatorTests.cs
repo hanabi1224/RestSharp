@@ -46,16 +46,13 @@ namespace RestSharp.Tests
         [Test]
         public void Authenticate_ShouldAddAuthorizationAsTextValueToRequest_OnHttpAuthorizationHeaderHandling()
         {
-            // Arrange
             var uri = new Uri("https://no-query.string");
             mockClient.Setup(x => x.BuildUri(It.IsAny<IRestRequest>())).Returns(uri);
 
             authenticator.ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader;
 
-            // Act
             authenticator.Authenticate(mockClient.Object, mockRequest.Object);
 
-            // Assert
             var authParameter = mockRequest.Object.Parameters.Single(x => x.Name == "Authorization");
             var value = (string)authParameter.Value;
 
@@ -75,16 +72,13 @@ namespace RestSharp.Tests
         [Test]
         public void Authenticate_ShouldAddSignatureToRequestAsSeparateParameters_OnUrlOrPostParametersHandling()
         {
-            // Arrange
             var uri = new Uri("https://no-query.string?queryparameter=foobartemp");
             mockClient.Setup(x => x.BuildUri(It.IsAny<IRestRequest>())).Returns(uri);
 
             authenticator.ParameterHandling = OAuthParameterHandling.UrlOrPostParameters;
 
-            // Act
             authenticator.Authenticate(mockClient.Object, mockRequest.Object);
 
-            // Assert
             var parameters = mockRequest.Object.Parameters;
             
             Assert.IsNotNull(parameters.FirstOrDefault(x => x.Type == ParameterType.GetOrPost && x.Name == "x_auth_username" && (string)x.Value == "ClientUsername" && x.ContentType == null));

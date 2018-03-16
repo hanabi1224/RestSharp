@@ -268,8 +268,8 @@ namespace RestSharp
 
             var applied = ApplyUrlSegmentParamsValues(request);
 
-            BaseUrl = applied.uri;
-            string resource = applied.resource;
+            BaseUrl = applied.Uri;
+            string resource = applied.Resource;
 
             string mergedUri = MergeBaseUrlAndResource(resource);
 
@@ -297,7 +297,7 @@ namespace RestSharp
             }
         }
 
-        private (Uri uri, string resource) ApplyUrlSegmentParamsValues(IRestRequest request)
+        private ResourceValue ApplyUrlSegmentParamsValues(IRestRequest request)
         {
             string assembled = request.Resource;
             bool hasResource = !string.IsNullOrEmpty(assembled);
@@ -317,7 +317,7 @@ namespace RestSharp
                 builder.Path = builder.Path.UrlDecode().Replace(paramPlaceHolder, paramValue);
             }
 
-            return (builder.Uri, assembled);
+            return new ResourceValue(builder.Uri, assembled);
         }
 
         private string MergeBaseUrlAndResource(string resource)
@@ -696,6 +696,18 @@ namespace RestSharp
 
             // At this point it is probably using a wildcard structured syntax suffix, but let's confirm.
             return StructuredSyntaxSuffixWildcardRegex.IsMatch(contentType);
+        }
+
+        private struct ResourceValue
+        {
+            public ResourceValue(Uri uri, string resource)
+            {
+                Uri = uri;
+                Resource = resource;
+            }
+
+            internal Uri Uri { get; }
+            internal string Resource { get; }
         }
     }
 }
