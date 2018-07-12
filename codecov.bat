@@ -1,0 +1,4 @@
+choco install opencover.portable
+choco install codecov
+OpenCover.Console.exe -register:user -target:"C:\Program Files\dotnet\dotnet.exe" -targetargs:"test -c Release --verbosity q"
+codecov -f "results.xml" 

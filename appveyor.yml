@@ -13,7 +13,11 @@
   build_script:
     - build.bat
 
+  after_test:
+    - codecov.bat
+
   skip_tags: true
+
 
 -
   branches:
@@ -30,7 +34,11 @@
   build_script:
     - build.bat
 
+  after_test:
+    - codecov.bat
+
   skip_tags: true
+
 
 -
   configuration: Debug
@@ -40,5 +48,7 @@
   build_script:
     - build.bat
 
-  skip_tags: true
+  after_test:
+    - codecov.bat
 
+  skip_tags: true
