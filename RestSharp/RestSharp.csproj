@@ -16,7 +16,7 @@
     <UpdateVersionProperties>true</UpdateVersionProperties>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta*">
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta*" Condition="$(IsInCodeCoverageTask) == ''">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
