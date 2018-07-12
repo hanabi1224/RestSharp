@@ -14,7 +14,7 @@
     - build.bat
 
   after_test:
-    - codecov.bat
+    - codecov.bat Release
 
   skip_tags: true
 
@@ -35,7 +35,7 @@
     - build.bat
 
   after_test:
-    - codecov.bat
+    - codecov.bat Debug
 
   skip_tags: true
 
@@ -49,6 +49,6 @@
     - build.bat
 
   after_test:
-    - codecov.bat
+    - codecov.bat Debug
 
   skip_tags: true
