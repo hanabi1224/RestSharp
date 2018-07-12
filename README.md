@@ -2,6 +2,10 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/5vdwwducje0miayf?svg=true)](https://ci.appveyor.com/project/hallem/restsharp)
 
+[![codecov](https://codecov.io/gh/restsharp/RestSharp/branch/master/graph/badge.svg)](https://codecov.io/gh/restsharp/RestSharp)
+
+[![NuGet version](https://badge.fury.io/nu/RestSharp.svg)](https://badge.fury.io/nu/RestSharp)
+
 [![Join the chat at https://gitter.im/RestSharp/RestSharp](https://badges.gitter.im/RestSharp/RestSharp.svg)](https://gitter.im/RestSharp/RestSharp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### [Official Site][1] - [@RestSharp][2]  
